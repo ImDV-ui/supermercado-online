@@ -1,0 +1,18 @@
+body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f4f4; }
+header { background: #ef5350; color: white; padding: 1rem; }
+nav ul { list-style: none; display: flex; gap: 20px; cursor: pointer; }
+nav ul li:hover { text-decoration: underline; font-weight: bold; }
+
+.product-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 20px; 
+    padding: 20px; 
+}
+.product-card { 
+    background: white; 
+    padding: 15px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+.price { color: #2e7d32; font-weight: bold; font-size: 1.2rem; }
