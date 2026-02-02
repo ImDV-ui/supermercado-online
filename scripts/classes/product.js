@@ -1,9 +1,7 @@
-export class Product {
-    constructor(name, price, description, category, featured = false) {
+export class Product
+{
+    constructor(name)
+    {
         this.name = name;
-        this.price = price;
-        this.description = description;
-        this.category = category;
-        this.featured = featured;
     }
 }
