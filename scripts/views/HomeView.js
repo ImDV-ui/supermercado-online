@@ -21,9 +21,9 @@ export class HomeView {
                 <span class="hero-subtitle">COLECCIONABLES PREMIUM TCG</span>
                 <h1 class="hero-title">EL ÚLTIMO<br>Y ME VOY</h1>
                 <p>Tu destino definitivo para cartas Pokémon de importación japonesa, coreana y ediciones exclusivas.</p>
-                <div style="margin-top: 30px;">
-                    <a href="#/shop" class="btn btn-primary">VER COLECCIÓN</a>
-                    <a href="#/shop/cajas" class="btn" style="margin-left: 10px;">VER CAJAS</a>
+                <div style="margin-top: 40px; display: flex; gap: 20px; justify-content: center;">
+                    <a href="#/shop" class="btn">VER COLECCIÓN</a>
+                    <a href="#/shop/booster-boxes" class="btn" style="background: transparent; border: 1px solid var(--border-color); color: var(--text-primary);">VER CAJAS</a>
                 </div>
             </div>
         `;
@@ -37,9 +37,9 @@ export class HomeView {
         featured.innerHTML = `
             <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px;">
                 <h2 style="font-size: 2rem;">DESTACADOS</h2>
-                <a href="#/shop" class="btn-link" style="font-size: 0.9rem; text-decoration: underline;">Ver todo</a>
+                <a href="#/shop" style="font-size: 0.9rem; text-decoration: underline; color: var(--pkm-blue);">Ver todo</a>
             </div>
-            <div class="product-grid">
+            <div class="products-grid">
                 ${this.featuredProducts.map(product => this.createProductCard(product)).join('')}
             </div>
         `;
@@ -47,21 +47,20 @@ export class HomeView {
         // 3. Banner / Story
         const banner = document.createElement('section');
         banner.className = 'fade-in';
-        banner.style.background = '#111';
-        banner.style.color = '#fff';
+        banner.style.borderTop = '1px solid var(--border-color)';
         banner.style.padding = '100px 0';
         banner.style.textAlign = 'center';
-        banner.style.marginBottom = '80px';
+        banner.style.marginTop = '80px';
         banner.style.animationDelay = '0.4s';
 
         banner.innerHTML = `
             <div class="container">
-                <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: #fff;">LA BÚSQUEDA TERMINA AQUÍ</h2>
-                <p style="max-width: 700px; margin: 0 auto 40px; color: #ccc;">
+                <span style="color: var(--brand-accent); letter-spacing: 2px; font-size: 0.8rem; display: block; margin-bottom: 20px;">NUESTRA MISIÓN</span>
+                <h2 style="font-size: 2.5rem; margin-bottom: 30px;">LA BÚSQUEDA TERMINA AQUÍ</h2>
+                <p style="max-width: 600px; margin: 0 auto; color: var(--text-secondary);">
                     Nos dedicamos a traer las rarezas que faltan en tu carpeta. 
-                    Desde los sobres más exclusivos de Japón hasta las Elite Trainer Boxes que ya no encuentras en tiendas.
+                    Piezas seleccionadas para el coleccionista exigente.
                 </p>
-                <a href="#/account" class="btn" style="border-color: #fff; color: #fff;">ÚNETE AL CLUB</a>
             </div>
         `;
 
@@ -73,19 +72,23 @@ export class HomeView {
     }
 
     createProductCard(product) {
+        // badge logic
+        const isNew = Math.random() > 0.5;
+        const badge = isNew ? '<span class="badge">DESTACADO</span>' : '';
+
         return `
-            <div class="product-card" onclick="window.location.hash='#/product/${product.id}'">
-                <div class="image-wrapper">
-                    <img src="${product.imagen}" alt="${product.nombre}" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <div>
-                        <h3 class="product-name">${product.nombre}</h3>
-                        <p style="font-size: 0.8rem; color: #999; text-transform: uppercase; margin-top: 5px;">${product.categoria}</p>
-                    </div>
-                    <span class="product-price">${product.precio.toFixed(2)} €</span>
-                </div>
-            </div>
-        `;
+             <div class="product-card" onclick="window.location.hash='#/product/${product.id}'">
+                 <div style="position: relative;">
+                     ${badge}
+                     <img src="${product.imagen}" alt="${product.nombre}" loading="lazy">
+                 </div>
+                 <div class="product-info-container">
+                     <p class="product-category">${product.categoria.toUpperCase()}</p>
+                     <h3 class="product-title">${product.nombre}</h3>
+                     <div class="price">${product.precio.toFixed(2)} €</div>
+                     <span class="button-buy">VER DETALLES</span>
+                 </div>
+             </div>
+         `;
     }
 }

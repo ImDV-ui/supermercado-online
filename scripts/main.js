@@ -44,7 +44,8 @@ export class Main {
 
     async handleRoute() {
         const hash = window.location.hash || '#/';
-        const params = hash.split('/'); // #/product/123 -> ["#", "product", "123"]
+        const [cleanHash, queryString] = hash.split('?');
+        const params = cleanHash.split('/'); // #/product/123 -> ["#", "product", "123"]
         const route = params[1] || ''; // home is default
 
         // Reset scroll
@@ -64,7 +65,14 @@ export class Main {
                     break;
                 case 'shop':
                     view = new ShopView();
-                    this.mainContent.appendChild(await view.render(params[2])); // params[2] might be category
+                    let arg = params[2]; // Category if exists: #/shop/category
+
+                    // If we have a query string search, override arg
+                    if (queryString && queryString.includes('search=')) {
+                        const searchVal = decodeURIComponent(queryString.split('search=')[1]);
+                        arg = { search: searchVal };
+                    }
+                    this.mainContent.appendChild(await view.render(arg));
                     break;
                 case 'product':
                     view = new ProductDetailView(this.cartService);

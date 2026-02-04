@@ -15,33 +15,59 @@ export class HeaderView {
         const navLeft = document.createElement('nav');
         navLeft.className = 'nav-left nav-links';
         navLeft.innerHTML = `
-            <a href="#/shop" class="btn-link">SELLADO</a>
-            <a href="#/shop/accesorios" class="btn-link">ACCESORIOS</a>
-            <a href="#/shop/premium" class="btn-link">COLECCIONES</a>
-            <a href="#/shop" class="btn-link">NOVEDADES</a>
+            <a href="#/shop">SELLADO</a>
+            <a href="#/shop/accesorios">ACCESORIOS</a>
+            <a href="#/shop/premium">COLECCIONES</a>
+            <a href="#/shop">NOVEDADES</a>
         `;
 
         // 2. Logo Centro
         const logo = document.createElement('div');
         logo.className = 'logo';
-        logo.textContent = 'EL ÚLTIMO Y ME VOY';
+        logo.innerHTML = 'EL ÚLTIMO Y ME VOY'; // Clean, let CSS handle font weight/style
         logo.onclick = () => window.location.hash = '#/';
 
         // 3. Iconos Derecha
         const icons = document.createElement('div');
         icons.className = 'icons-right';
 
-        // Search (Simulado)
+        // Search (Real)
+        const searchInput = document.createElement('input');
+        searchInput.type = 'text';
+        searchInput.placeholder = 'BUSCAR...';
+        searchInput.className = 'search-input hidden';
+        searchInput.style.border = 'none';
+        searchInput.style.borderBottom = '1px solid var(--text-secondary)';
+        searchInput.style.background = 'transparent';
+        searchInput.style.color = 'var(--text-primary)';
+        searchInput.style.padding = '5px 0';
+        searchInput.style.marginRight = '15px';
+        searchInput.style.fontFamily = 'inherit';
+        searchInput.style.fontSize = '0.9rem';
+        searchInput.style.width = '200px';
+        searchInput.style.outline = 'none';
+        searchInput.style.letterSpacing = '1px';
+
+        searchInput.addEventListener('input', () => {
+            searchInput.style.borderBottomColor = 'var(--brand-accent)';
+        });
+
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && searchInput.value.trim()) {
+                window.location.hash = `#/shop?search=${encodeURIComponent(searchInput.value.trim())}`;
+                searchInput.classList.add('hidden'); // Hide after search
+            }
+        });
+
         const searchBtn = document.createElement('button');
         searchBtn.innerHTML = '🔍';
         searchBtn.className = 'icon-btn';
-        searchBtn.onclick = () => alert('Buscador simulado');
-
-        // Account
-        const accountBtn = document.createElement('a');
-        accountBtn.href = '#/account';
-        accountBtn.innerHTML = '👤';
-        accountBtn.className = 'icon-btn';
+        searchBtn.onclick = () => {
+            searchInput.classList.toggle('hidden');
+            if (!searchInput.classList.contains('hidden')) {
+                searchInput.focus();
+            }
+        };
 
         // Cart
         const cartWrapper = document.createElement('div');
@@ -61,8 +87,9 @@ export class HeaderView {
         cartWrapper.appendChild(cartIcon);
         cartWrapper.appendChild(badge);
 
+        icons.appendChild(searchInput);
         icons.appendChild(searchBtn);
-        icons.appendChild(accountBtn);
+        // Removed Account Button
         icons.appendChild(cartWrapper);
 
         inner.appendChild(navLeft);
