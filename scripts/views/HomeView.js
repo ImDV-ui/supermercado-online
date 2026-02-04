@@ -21,9 +21,9 @@ export class HomeView {
                 <span class="hero-subtitle">COLECCIONABLES PREMIUM TCG</span>
                 <h1 class="hero-title">EL ÚLTIMO<br>Y ME VOY</h1>
                 <p>Tu destino definitivo para cartas Pokémon de importación japonesa, coreana y ediciones exclusivas.</p>
-                <div style="margin-top: 40px; display: flex; gap: 20px; justify-content: center;">
+                <div class="hero-actions">
                     <a href="#/shop" class="btn">VER COLECCIÓN</a>
-                    <a href="#/shop/booster-boxes" class="btn" style="background: transparent; border: 1px solid var(--border-color); color: var(--text-primary);">VER CAJAS</a>
+                    <a href="#/shop/booster-boxes" class="btn btn-outline">VER CAJAS</a>
                 </div>
             </div>
         `;
@@ -35,9 +35,9 @@ export class HomeView {
         featured.style.animationDelay = '0.2s';
 
         featured.innerHTML = `
-            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px;">
-                <h2 style="font-size: 2rem;">DESTACADOS</h2>
-                <a href="#/shop" style="font-size: 0.9rem; text-decoration: underline; color: var(--pkm-blue);">Ver todo</a>
+            <div class="section-header">
+                <h2 class="section-title">DESTACADOS</h2>
+                <a href="#/shop" class="view-all-link">Ver todo</a>
             </div>
             <div class="products-grid">
                 ${this.featuredProducts.map(product => this.createProductCard(product)).join('')}
@@ -55,9 +55,9 @@ export class HomeView {
 
         banner.innerHTML = `
             <div class="container">
-                <span style="color: var(--brand-accent); letter-spacing: 2px; font-size: 0.8rem; display: block; margin-bottom: 20px;">NUESTRA MISIÓN</span>
-                <h2 style="font-size: 2.5rem; margin-bottom: 30px;">LA BÚSQUEDA TERMINA AQUÍ</h2>
-                <p style="max-width: 600px; margin: 0 auto; color: var(--text-secondary);">
+                <span class="mission-label">NUESTRA MISIÓN</span>
+                <h2 class="mission-title">LA BÚSQUEDA TERMINA AQUÍ</h2>
+                <p class="mission-text">
                     Nos dedicamos a traer las rarezas que faltan en tu carpeta. 
                     Piezas seleccionadas para el coleccionista exigente.
                 </p>

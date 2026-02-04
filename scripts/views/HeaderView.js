@@ -87,16 +87,46 @@ export class HeaderView {
         cartWrapper.appendChild(cartIcon);
         cartWrapper.appendChild(badge);
 
+        // 4. Hamburger Menu (Mobile)
+        const hamburger = document.createElement('button');
+        hamburger.className = 'hamburger-menu';
+        hamburger.innerHTML = '☰';
+        hamburger.onclick = () => {
+            this.mobileMenu.classList.toggle('active');
+            hamburger.innerHTML = this.mobileMenu.classList.contains('active') ? '✕' : '☰';
+        };
+
+        // Mobile Menu Container
+        this.mobileMenu = document.createElement('div');
+        this.mobileMenu.className = 'mobile-menu';
+        this.mobileMenu.innerHTML = `
+            <nav class="mobile-nav-links">
+                <a href="#/shop">SELLADO</a>
+                <a href="#/shop/accesorios">ACCESORIOS</a>
+                <a href="#/shop/premium">COLECCIONES</a>
+                <a href="#/shop">NOVEDADES</a>
+            </nav>
+        `;
+
+        // Close menu when clicking a link
+        this.mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                this.mobileMenu.classList.remove('active');
+                hamburger.innerHTML = '☰';
+            });
+        });
+
         icons.appendChild(searchInput);
         icons.appendChild(searchBtn);
-        // Removed Account Button
         icons.appendChild(cartWrapper);
+        icons.appendChild(hamburger); // Add hamburger to icons area for alignment
 
         inner.appendChild(navLeft);
         inner.appendChild(logo);
         inner.appendChild(icons);
 
         this.element.appendChild(inner);
+        this.element.appendChild(this.mobileMenu);
 
         return this.element;
     }
