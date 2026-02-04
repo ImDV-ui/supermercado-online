@@ -49,8 +49,6 @@ export class ProductDetailView {
                 </div>
             </div>
         `;
-
-        // Add event listener manually after render
         const btn = container.querySelector('#add-to-cart-btn');
         const qtyInput = container.querySelector('#qty');
 

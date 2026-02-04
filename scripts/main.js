@@ -15,14 +15,13 @@ export class Main {
         this.cartService = new CartService();
         this.userService = new UserService();
 
-        // Inicializar Views
         this.headerView = new HeaderView(this.cartService, this.userService);
         this.footerView = new FooterView();
     }
 
     async init() {
-        // Estructura Base Layout
-        this.appElement.innerHTML = ''; // Limpiar
+
+        this.appElement.innerHTML = '';
 
         const header = this.headerView.render();
         this.appElement.appendChild(header);
@@ -35,23 +34,19 @@ export class Main {
         const footer = this.footerView.render();
         this.appElement.appendChild(footer);
 
-        // Router Listener
         window.addEventListener('hashchange', () => this.handleRoute());
 
-        // Initial Route
         this.handleRoute();
     }
 
     async handleRoute() {
         const hash = window.location.hash || '#/';
         const [cleanHash, queryString] = hash.split('?');
-        const params = cleanHash.split('/'); // #/product/123 -> ["#", "product", "123"]
-        const route = params[1] || ''; // home is default
+        const params = cleanHash.split('/');
+        const route = params[1] || '';
 
-        // Reset scroll
         window.scrollTo(0, 0);
 
-        // Simple loading state
         this.mainContent.style.opacity = '0.5';
 
         try {
@@ -65,9 +60,8 @@ export class Main {
                     break;
                 case 'shop':
                     view = new ShopView();
-                    let arg = params[2]; // Category if exists: #/shop/category
+                    let arg = params[2];
 
-                    // If we have a query string search, override arg
                     if (queryString && queryString.includes('search=')) {
                         const searchVal = decodeURIComponent(queryString.split('search=')[1]);
                         arg = { search: searchVal };
@@ -97,9 +91,8 @@ export class Main {
             console.error('Routing Error:', error);
             this.mainContent.innerHTML = '<h2>Error loading page</h2>';
         } finally {
-            // Fade in animation reset
             this.mainContent.className = '';
-            void this.mainContent.offsetWidth; // trigger reflow
+            void this.mainContent.offsetWidth;
             this.mainContent.className = 'fade-in';
             this.mainContent.style.opacity = '1';
         }

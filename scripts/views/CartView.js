@@ -73,11 +73,9 @@ export class CartView {
             </div>
         `;
 
-        // Add Listeners
         container.querySelectorAll('.remove-btn').forEach(btn => {
             btn.onclick = () => {
                 this.cartService.removeItem(parseInt(btn.dataset.id));
-                // Re-render whole view (simple approach) or dispatch event
                 window.location.reload();
             };
         });

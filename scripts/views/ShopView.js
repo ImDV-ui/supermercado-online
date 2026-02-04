@@ -9,23 +9,21 @@ export class ShopView {
     async render(filterCategory = null) {
         const container = document.createElement('div');
         container.className = 'container fade-in';
-        container.style.paddingTop = '60px'; // More spacing for header
+        container.style.paddingTop = '60px';
         container.style.paddingBottom = '100px';
 
-        // Filter Logic
-        let productsToShow = [...this.allProducts]; // Clone to sort safely
+        let productsToShow = [...this.allProducts];
         let title = 'COLECCIÓN COMPLETA';
 
         if (filterCategory) {
             if (typeof filterCategory === 'object' && filterCategory.search) {
-                // Search Mode
                 const query = filterCategory.search.toLowerCase();
                 productsToShow = productsToShow.filter(p =>
                     p.nombre.toLowerCase().includes(query) ||
                     p.descripcion.toLowerCase().includes(query)
                 );
                 title = `BUSCANDO: "${filterCategory.search}"`;
-                filterCategory = null; // Clear category pill highlight if searching
+                filterCategory = null;
             } else {
                 // Category Mode
                 const categoryObj = this.categories.find(c => c.id === filterCategory);
@@ -36,7 +34,6 @@ export class ShopView {
             }
         }
 
-        // Header Section
         const header = document.createElement('div');
         header.style.marginBottom = '60px';
         header.innerHTML = `
@@ -68,15 +65,12 @@ export class ShopView {
             </div>
         `;
 
-        // Grid Container
         const grid = document.createElement('div');
-        grid.className = 'products-grid'; // New class name
+        grid.className = 'products-grid';
         grid.id = 'shop-grid';
 
-        // Render initial items
         this.renderGridItems(grid, productsToShow);
 
-        // Add Sort Listener
         const sortSelect = header.querySelector('#sort-select');
         sortSelect.addEventListener('change', (e) => {
             const sortValue = e.target.value;
@@ -109,7 +103,6 @@ export class ShopView {
     }
 
     createProductCard(product) {
-        // badge logic (randomly simulation or logic)
         const isNew = product.id > 1000;
         const badge = isNew ? '<span class="badge">NUEVO</span>' : '';
 
@@ -119,7 +112,7 @@ export class ShopView {
                     ${badge}
                     <img src="${product.imagen}" alt="${product.nombre}" loading="lazy">
                 </div>
-                <div class="product-info-container"> <!-- Wrapper for spacing if needed -->
+                <div class="product-info-container">
                     <p class="product-category">${product.categoria.toUpperCase()}</p>
                     <h3 class="product-title">${product.nombre}</h3>
                     <div class="price">${product.precio.toFixed(2)} €</div>

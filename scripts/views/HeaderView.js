@@ -11,7 +11,6 @@ export class HeaderView {
         const inner = document.createElement('div');
         inner.className = 'container header-inner';
 
-        // 1. Navegación Izquierda
         const navLeft = document.createElement('nav');
         navLeft.className = 'nav-left nav-links';
         navLeft.innerHTML = `
@@ -21,17 +20,14 @@ export class HeaderView {
             <a href="#/shop">NOVEDADES</a>
         `;
 
-        // 2. Logo Centro
         const logo = document.createElement('div');
         logo.className = 'logo';
-        logo.innerHTML = 'EL ÚLTIMO Y ME VOY'; // Clean, let CSS handle font weight/style
+        logo.innerHTML = 'EL ÚLTIMO Y ME VOY';
         logo.onclick = () => window.location.hash = '#/';
 
-        // 3. Iconos Derecha
         const icons = document.createElement('div');
         icons.className = 'icons-right';
 
-        // Search (Real)
         const searchInput = document.createElement('input');
         searchInput.type = 'text';
         searchInput.placeholder = 'BUSCAR...';
@@ -55,7 +51,7 @@ export class HeaderView {
         searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter' && searchInput.value.trim()) {
                 window.location.hash = `#/shop?search=${encodeURIComponent(searchInput.value.trim())}`;
-                searchInput.classList.add('hidden'); // Hide after search
+                searchInput.classList.add('hidden');
             }
         });
 
@@ -69,7 +65,6 @@ export class HeaderView {
             }
         };
 
-        // Cart
         const cartWrapper = document.createElement('div');
         cartWrapper.className = 'cart-icon-wrapper';
         cartWrapper.onclick = () => window.location.hash = '#/cart';
@@ -87,7 +82,6 @@ export class HeaderView {
         cartWrapper.appendChild(cartIcon);
         cartWrapper.appendChild(badge);
 
-        // 4. Hamburger Menu (Mobile)
         const hamburger = document.createElement('button');
         hamburger.className = 'hamburger-menu';
         hamburger.innerHTML = '☰';
@@ -96,7 +90,6 @@ export class HeaderView {
             hamburger.innerHTML = this.mobileMenu.classList.contains('active') ? '✕' : '☰';
         };
 
-        // Mobile Menu Container
         this.mobileMenu = document.createElement('div');
         this.mobileMenu.className = 'mobile-menu';
         this.mobileMenu.innerHTML = `
@@ -108,7 +101,6 @@ export class HeaderView {
             </nav>
         `;
 
-        // Close menu when clicking a link
         this.mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 this.mobileMenu.classList.remove('active');
@@ -119,14 +111,14 @@ export class HeaderView {
         icons.appendChild(searchInput);
         icons.appendChild(searchBtn);
         icons.appendChild(cartWrapper);
-        icons.appendChild(hamburger); // Add hamburger to icons area for alignment
+        icons.appendChild(hamburger);
 
         inner.appendChild(navLeft);
         inner.appendChild(logo);
         inner.appendChild(icons);
 
         this.element.appendChild(inner);
-        this.element.appendChild(this.mobileMenu);
+        document.body.appendChild(this.mobileMenu);
 
         return this.element;
     }

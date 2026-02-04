@@ -13,7 +13,6 @@ export class UserService {
     }
 
     login(email, password) {
-        // Simulación de login exitoso
         if (email && password) {
             this.currentUser = {
                 id: 'u1',
@@ -30,7 +29,7 @@ export class UserService {
     logout() {
         this.currentUser = null;
         this._save();
-        window.location.reload(); // Recarga simple para resetear estado visual
+        window.location.reload();
     }
 
     addToWishlist(product) {

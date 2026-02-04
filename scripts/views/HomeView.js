@@ -3,9 +3,7 @@ import { ProductDatabase } from '../database/productDatabase.js';
 export class HomeView {
     constructor() {
         this.categories = ProductDatabase.obtenerDatos();
-        // Flatten all products
         this.allProducts = this.categories.flatMap(c => c.productos);
-        // Featured: Just taking some marked as featured or randoms for now
         this.featuredProducts = this.allProducts.filter(p => p.destacado).slice(0, 4);
     }
 
@@ -13,7 +11,6 @@ export class HomeView {
         const container = document.createElement('div');
         container.className = 'home-view';
 
-        // 1. Hero Section
         const hero = document.createElement('section');
         hero.className = 'hero-section fade-in';
         hero.innerHTML = `
@@ -28,7 +25,6 @@ export class HomeView {
             </div>
         `;
 
-        // 2. Featured Section
         const featured = document.createElement('section');
         featured.className = 'container fade-in';
         featured.style.marginBottom = '80px';
@@ -44,7 +40,6 @@ export class HomeView {
             </div>
         `;
 
-        // 3. Banner / Story
         const banner = document.createElement('section');
         banner.className = 'fade-in';
         banner.style.borderTop = '1px solid var(--border-color)';
@@ -72,7 +67,7 @@ export class HomeView {
     }
 
     createProductCard(product) {
-        // badge logic
+
         const isNew = Math.random() > 0.5;
         const badge = isNew ? '<span class="badge">DESTACADO</span>' : '';
 

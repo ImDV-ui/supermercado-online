@@ -1,11 +1,3 @@
-/* =========================
-   FUENTES PREMIUM
-========================= */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap');
-
-/* =========================
-   VARIABLES "COLLECTOR MODE"
-========================= */
 :root {
     /* Base Colors */
     --bg-main: #050505;
@@ -25,9 +17,6 @@
     --brand-accent: #f2c94c;
 }
 
-/* =========================
-   RESET & BASE
-========================= */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -75,9 +64,6 @@ img {
     display: block;
 }
 
-/* =========================
-   HEADER / NAVBAR
-========================= */
 header {
     background: rgba(5, 5, 5, 0.9);
     backdrop-filter: blur(12px);
@@ -132,9 +118,6 @@ header {
     /* Fixed height for alignment */
 }
 
-/* =========================
-   HERO SECTION
-========================= */
 .hero-section {
     padding: 240px 20px;
     /* Significantly expanded */
@@ -163,9 +146,6 @@ header {
     /* Fallback */
 }
 
-/* =========================
-   COMPONENTS
-========================= */
 .container {
     max-width: 1600px;
     margin: 0 auto;
@@ -208,9 +188,6 @@ header {
     color: #000;
 }
 
-/* =========================
-   GRID & CARDS
-========================= */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -258,9 +235,6 @@ header {
     color: var(--text-primary);
 }
 
-/* =========================
-   BADGES & UTILS
-========================= */
 .badge {
     position: absolute;
     top: 10px;
@@ -289,9 +263,6 @@ header {
     }
 }
 
-/* =========================
-   INNER PAGES (Cart, Detail, etc)
-========================= */
 .product-detail-container {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
@@ -329,7 +300,6 @@ header {
     padding-left: 20px;
 }
 
-/* Cart */
 .cart-page {
     max-width: 900px;
     margin: 60px auto;
@@ -348,7 +318,6 @@ header {
     padding: 30px;
 }
 
-/* Footer */
 footer {
     border-top: 1px solid var(--border-color);
     background: var(--bg-main);
@@ -395,9 +364,8 @@ footer {
 .footer-col input[type="email"]:focus {
     outline: none;
     border-color: var(--brand-accent);
-}/* =========================
-   ADDITIONAL UTILITIES
-========================= */
+}
+
 .btn-outline {
     background: transparent;
     border: 1px solid var(--border-color);
@@ -430,7 +398,8 @@ footer {
 .view-all-link {
     font-size: 0.9rem;
     text-decoration: underline;
-    color: var(--text-secondary); /* Fixed undefined var */
+    color: var(--text-secondary);
+    /* Fixed undefined var */
 }
 
 .mission-label {
@@ -452,9 +421,6 @@ footer {
     color: var(--text-secondary);
 }
 
-/* =========================
-   MOBILE MENU & RESPONSIVE
-========================= */
 .hamburger-menu {
     display: none;
     font-size: 1.5rem;
@@ -497,9 +463,6 @@ footer {
     letter-spacing: 2px;
 }
 
-/* =========================
-   MEDIA QUERIES
-========================= */
 @media (max-width: 1024px) {
     .header-inner {
         padding: 0 20px;
@@ -511,11 +474,11 @@ footer {
 }
 
 @media (max-width: 768px) {
-    /* Header */
+
     header {
         padding: 20px;
     }
-    
+
     .nav-links.nav-left {
         display: none;
     }
@@ -525,10 +488,10 @@ footer {
     }
 
     .search-input {
-        width: 120px !important; /* Force resize */
+        width: 120px !important;
+        /* Force resize */
     }
 
-    /* Hero */
     .hero-section {
         padding: 120px 20px;
     }
@@ -536,7 +499,7 @@ footer {
     .hero-title {
         font-size: 3rem;
     }
-    
+
     .hero-actions {
         flex-direction: column;
         gap: 15px;
@@ -547,7 +510,6 @@ footer {
         text-align: center;
     }
 
-    /* Product Detail */
     .product-detail-container {
         display: flex;
         flex-direction: column;
@@ -558,7 +520,7 @@ footer {
     .detail-gallery {
         padding: 20px;
     }
-    
+
     .detail-gallery img {
         max-height: 300px;
     }
@@ -566,12 +528,11 @@ footer {
     .detail-info {
         padding-top: 0;
     }
-    
+
     .detail-price {
         font-size: 1.5rem;
     }
 
-    /* Grid */
     .products-grid {
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
         gap: 15px;
@@ -581,7 +542,6 @@ footer {
         padding: 0 20px;
     }
 
-    /* Cart */
     .cart-item {
         flex-direction: column;
         align-items: flex-start;
@@ -594,14 +554,12 @@ footer {
         object-fit: cover;
     }
 
-    /* Footer */
     .footer-grid {
         grid-template-columns: 1fr;
         gap: 30px;
     }
-    
+
     footer {
         text-align: center;
     }
 }
-

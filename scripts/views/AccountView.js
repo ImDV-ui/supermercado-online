@@ -51,7 +51,6 @@ export class AccountView {
             const pass = form.querySelector('#password').value;
 
             if (this.userService.login(email, pass)) {
-                // Rerender dashboard
                 window.location.reload();
             }
         });

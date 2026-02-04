@@ -62,8 +62,6 @@ export class CheckoutView {
                 </form>
             </div>
         `;
-
-        // Mock Submission
         const form = container.querySelector('#shipping-form');
         form.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -125,7 +123,7 @@ export class CheckoutView {
         steps[1].classList.remove('active');
         steps[2].classList.add('active');
 
-        // Clear Cart
+        steps[2].classList.add('active');
         this.cartService.clearCart();
 
         formContainer.innerHTML = `

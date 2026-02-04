@@ -16,7 +16,7 @@ export class ProductView {
             const card = document.createElement('article');
             card.className = 'product-card';
 
-            // Placeholder de imagen (Gris como en la referencia si no hay imagen)
+
             const imgContainer = document.createElement('div');
             imgContainer.className = 'image-placeholder';
             imgContainer.textContent = 'IMG';

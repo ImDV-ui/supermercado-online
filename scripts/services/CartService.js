@@ -1,7 +1,7 @@
 export class CartService {
     constructor() {
         this.cart = JSON.parse(localStorage.getItem('cart')) || [];
-        this.taxRate = 0.21; // IVA 21%
+        this.taxRate = 0.21;
         this.shippingCost = 4.95;
         this.freeShippingThreshold = 50.00;
     }
@@ -50,8 +50,7 @@ export class CartService {
         const subtotal = this.cart.reduce((sum, item) => sum + (item.precio * item.quantity), 0);
         const shipping = subtotal >= this.freeShippingThreshold ? 0 : this.shippingCost;
         const tax = subtotal * this.taxRate;
-        const total = subtotal + shipping; // En este caso simplificado, asumimos precio con IVA incluido para display, o + tax si fuera neto.
-        // Simularemos que el precio del producto YA incluye impuestos, así que desglosamos el impuesto del subtotal.
+        const total = subtotal + shipping;
         const taxIncluded = subtotal - (subtotal / (1 + this.taxRate));
 
         return {
