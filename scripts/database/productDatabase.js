@@ -3,53 +3,80 @@ import { ProductCategory } from '../types/ProductCategory.js';
 
 export class ProductDatabase {
     static obtenerDatos() {
-        const categoriaPokemon = new ProductCategory('pokemon', 'Cartas Pokemon');
-        const categoriaEntrenador = new ProductCategory('entrenador', 'Cartas Entrenador');
-        const categoriaEnergia = new ProductCategory('energia', 'Cartas Energía');
-        const categoriaAccesorios = new ProductCategory('accesorios', 'Accesorios');
-        const categoriaETB = new ProductCategory('etb', 'Elite Trainer Boxes');
-        const categoriaBooster = new ProductCategory('booster', 'Booster Boxes');
+        // --- DEFINICIÓN DE CATEGORÍAS ---
+        const catBoosterBoxes = new ProductCategory('booster-boxes', 'Booster Boxes');
+        const catBoosterPacks = new ProductCategory('booster-packs', 'Booster Packs');
+        const catBoosterBundles = new ProductCategory('booster-bundles', 'Booster Bundles');
+        const catETB = new ProductCategory('etb', 'Elite Trainer Boxes');
+        const catTinsChests = new ProductCategory('tins-chests', 'Tins & Chests');
+        const catBlisters = new ProductCategory('blister-packs', 'Blister Packs');
+        const catBuildBattle = new ProductCategory('build-battle', 'Build & Battle');
+        const catBattleDecks = new ProductCategory('battle-decks', 'Battle Decks');
+        const catUPC = new ProductCategory('upc', 'Ultra-Premium Collections');
+        const catPremium = new ProductCategory('premium', 'Premium Collections');
+        const catBattleBoxes = new ProductCategory('battle-boxes', 'Battle Boxes');
+        const catAccesorios = new ProductCategory('accesorios', 'Accesorios');
 
-        // Pokemon
-        categoriaPokemon.agregarProducto(new Product(1, 'Charizard VMAX', 250.00, 'Charizard VMAX Shiny Rare. Una carta increiblemente rara y poderosa.', 'pokemon', 'https://images.pokemontcg.io/swsh45sv/107_hires.png', true));
-        categoriaPokemon.agregarProducto(new Product(2, 'Pikachu VTB', 120.00, 'Pikachu con arte completo edición especial.', 'pokemon', 'https://images.pokemontcg.io/swsh4/170_hires.png', true));
-        categoriaPokemon.agregarProducto(new Product(3, 'Mewtwo GX', 89.99, 'Mewtwo GX de la expansión Leyendas Luminosas.', 'pokemon', 'https://images.pokemontcg.io/sm35/39_hires.png'));
-        categoriaPokemon.agregarProducto(new Product(4, 'Gengar & Mimikyu GX', 150.00, 'Equipo de relevos Gengar y Mimikyu.', 'pokemon', 'https://images.pokemontcg.io/sm9/53_hires.png'));
-        categoriaPokemon.agregarProducto(new Product(5, 'Lugia V', 45.00, 'Lugia V Arte Alternativo.', 'pokemon', 'https://images.pokemontcg.io/swsh12/186_hires.png'));
-        categoriaPokemon.agregarProducto(new Product(6, 'Rayquaza VMAX', 320.00, 'Rayquaza VMAX Secreto Raro.', 'pokemon', 'https://images.pokemontcg.io/swsh7/218_hires.png', true));
-        categoriaPokemon.agregarProducto(new Product(15, 'Battle Deck Mewtwo EX', 49.95, 'Mazo de batalla listo para jugar protagonizado por Mewtwo EX del Team Rocket.', 'pokemon', 'https://images.pokemontcg.io/sv2a/150_hires.png'));
-        categoriaPokemon.agregarProducto(new Product(16, 'Booster Pack Héroes Ascendentes', 7.95, 'Paquete de mejora con 10 cartas adicionales para tu colección.', 'pokemon', 'https://www.serebii.net/card/paldeaevolved/pack.jpg'));
-        categoriaPokemon.agregarProducto(new Product(17, 'Colección Premium Victini', 34.95, 'Caja de colección especial con carta promocional de Victini.', 'pokemon', 'https://images.pokemontcg.io/swsh5/22_hires.png'));
+        // --- 1. BOOSTER BOXES ---
+        catBoosterBoxes.agregarProducto(new Product(101, 'Booster Box – Battle Partners [JP]', 77.95, 'Caja de 30 sobres. Enfocada en combates dobles y aliados.', 'booster-boxes', 'https://product-images.tcgplayer.com/fit-in/400x400/532986.jpg', true));
+        catBoosterBoxes.agregarProducto(new Product(102, 'Booster Box – Mega Brave [JP]', 89.95, 'Edición japonesa con cartas exclusivas.', 'booster-boxes', 'https://product-images.tcgplayer.com/fit-in/400x400/532986.jpg'));
 
-        // Entrenador
-        categoriaEntrenador.agregarProducto(new Product(7, 'Investigación de Profesores', 5.00, 'Descarta tu mano y roba 7 cartas.', 'entrenador', 'https://images.pokemontcg.io/swsh1/178_hires.png'));
-        categoriaEntrenador.agregarProducto(new Product(8, 'Ordenes de Jefes', 15.00, 'Cambia uno de los Pokemon en banca de tu oponente al puesto activo.', 'entrenador', 'https://images.pokemontcg.io/swsh2/154_hires.png', true));
-        categoriaEntrenador.agregarProducto(new Product(9, 'Ultra Ball', 2.00, 'Busca en tu baraja un Pokemon.', 'entrenador', 'https://images.pokemontcg.io/swsh9/150_hires.png'));
+        // --- 2. BOOSTER PACKS ---
+        catBoosterPacks.agregarProducto(new Product(201, 'Booster Pack – Héroes Ascendentes [ES]', 4.95, 'Sobre individual en español.', 'booster-packs', 'https://product-images.tcgplayer.com/fit-in/400x400/497534.jpg'));
+        catBoosterPacks.agregarProducto(new Product(202, 'Booster Pack – Mega Brave [KR]', 3.95, 'Sobre coreano económico.', 'booster-packs', 'https://product-images.tcgplayer.com/fit-in/400x400/497534.jpg'));
+        catBoosterPacks.agregarProducto(new Product(203, 'Booster Pack – Mega Symphonia [KR]', 3.95, 'Sobre coreano de alta demanda.', 'booster-packs', 'https://product-images.tcgplayer.com/fit-in/400x400/497534.jpg'));
+        catBoosterPacks.agregarProducto(new Product(204, 'Booster Pack – Inferno X [JP]', 5.95, 'Sobre japonés con arts secretos.', 'booster-packs', 'https://product-images.tcgplayer.com/fit-in/400x400/497534.jpg'));
+        catBoosterPacks.agregarProducto(new Product(205, 'Booster Pack – Battle Partners [JP]', 5.95, 'Sobre japonés enfocado en Tag Teams.', 'booster-packs', 'https://product-images.tcgplayer.com/fit-in/400x400/497534.jpg'));
 
-        // Energía
-        categoriaEnergia.agregarProducto(new Product(10, 'Energía Fuego Holo', 8.00, 'Energía básica de tipo fuego con acabado holográfico.', 'energia', 'https://images.pokemontcg.io/smp/SM231_hires.png'));
-        categoriaEnergia.agregarProducto(new Product(11, 'Energía Psíquica Secreta', 25.00, 'Energía psíquica rara dorada.', 'energia', 'https://images.pokemontcg.io/swsh6/232_hires.png', true));
-        categoriaEnergia.agregarProducto(new Product(12, 'Doble Energía Incolora', 12.00, 'Proporciona dos energías incoloras.', 'energia', 'https://images.pokemontcg.io/sm1/136_hires.png'));
+        // --- 3. BOOSTER BUNDLES ---
+        catBoosterBundles.agregarProducto(new Product(301, 'Booster Bundle – Héroes Ascendentes [ES]', 26.95, 'Lote de 6 sobres.', 'booster-bundles', 'https://product-images.tcgplayer.com/fit-in/400x400/515570.jpg'));
+        catBoosterBundles.agregarProducto(new Product(302, 'Booster Bundle – Edición Especial', 29.95, 'Lote especial con promo.', 'booster-bundles', 'https://product-images.tcgplayer.com/fit-in/400x400/515570.jpg', true));
 
-        // Accesorios
-        categoriaAccesorios.agregarProducto(new Product(13, 'Fundas Elite Trainer', 12.99, 'Paquete de 65 fundas protectoras con diseño de Charizard.', 'accesorios', 'https://m.media-amazon.com/images/I/71u9+5U7bPL._AC_SL1500_.jpg'));
-        categoriaAccesorios.agregarProducto(new Product(14, 'Caja de Mazo Ultra Pro', 5.99, 'Caja de plástico resistente para guardar tu mazo.', 'accesorios', 'https://m.media-amazon.com/images/I/61+y5y-pG1L._AC_SL1001_.jpg'));
-        categoriaAccesorios.agregarProducto(new Product(18, 'Álbum Pro Binder Gengar', 50.95, 'Álbum de 9 bolsillos con cremallera y diseño exclusivo de Gengar.', 'accesorios', 'https://m.media-amazon.com/images/I/71Y-3q9Q5+L._AC_SY879_.jpg'));
-        categoriaAccesorios.agregarProducto(new Product(19, 'Deck Box Elite Gengar', 32.95, 'Caja para mazo con diseño de Gengar para proteger tus cartas.', 'accesorios', 'https://m.media-amazon.com/images/I/71wF74-qLBL._AC_SY879_.jpg'));
+        // --- 4. ELITE TRAINER BOXES ---
+        catETB.agregarProducto(new Product(401, 'Elite Trainer Box – Héroes Ascendentes [ES]', 49.95, 'Caja de Entrenador Élite completa.', 'etb', 'https://product-images.tcgplayer.com/fit-in/400x400/497525.jpg'));
+        catETB.agregarProducto(new Product(402, 'Elite Trainer Box – Edición Especial', 59.95, 'ETB Exclusiva Pokémon Center.', 'etb', 'https://product-images.tcgplayer.com/fit-in/400x400/497525.jpg', true));
 
-        // ETBs
-        categoriaETB.agregarProducto(new Product(20, 'ETB Paradox Rift - Iron Valiant', 49.95, 'Caja de Entrenador Élite con fundas, dados y guía de la expansión Paradox Rift.', 'etb', 'https://product-images.tcgplayer.com/fit-in/1000x1000/512801.jpg'));
-        categoriaETB.agregarProducto(new Product(21, 'ETB Obsidian Flames - Charizard', 54.95, 'Caja de Entrenador Élite protagonizada por Charizard ex.', 'etb', 'https://product-images.tcgplayer.com/fit-in/1000x1000/512040.jpg'));
-        categoriaETB.agregarProducto(new Product(22, 'ETB Scarlet & Violet - 151', 59.95, 'La colección especial de los 151 originales. Incluye carta promo de Snorlax.', 'etb', 'https://www.serebii.net/card/sv151/etb.jpg'));
-        categoriaETB.agregarProducto(new Product(23, 'ETB Paldea Evolved', 45.95, 'Elite Trainer Box de la expansión Evoluciones en Paldea.', 'etb', 'https://www.serebii.net/card/paldeaevolved/etb.jpg'));
+        // --- 5. TINS & CHESTS ---
+        catTinsChests.agregarProducto(new Product(501, 'Tin Pokémon – Edición Coleccionista', 24.95, 'Lata metálica con sobres y carta promo.', 'tins-chests', 'https://product-images.tcgplayer.com/fit-in/400x400/274438.jpg'));
+        catTinsChests.agregarProducto(new Product(502, 'Chest Pokémon – Edición Especial', 34.95, 'Cofre del tesoro con artículos variados.', 'tins-chests', 'https://product-images.tcgplayer.com/fit-in/400x400/274438.jpg'));
 
-        // Booster Boxes
-        categoriaBooster.agregarProducto(new Product(24, 'Booster Box Eevee Heroes [KR]', 79.95, 'Caja de 30 sobres de la increíble colección Eevee Heroes en coreano.', 'booster', 'https://product-images.tcgplayer.com/fit-in/1000x1000/240366.jpg'));
-        categoriaBooster.agregarProducto(new Product(25, 'Booster Box 151 [JP]', 149.95, 'La codiciada caja japonesa de Pokemon 151. 20 Sobres con cartas garantizadas.', 'booster', 'https://product-images.tcgplayer.com/fit-in/1000x1000/565243.jpg'));
-        categoriaBooster.agregarProducto(new Product(26, 'Booster Box Ruler of the Black Flame [JP]', 89.95, 'Caja sellada de la colección japonesa Ruler of the Black Flame (Inferno).', 'booster', 'https://product-images.tcgplayer.com/fit-in/1000x1000/565236.jpg'));
-        categoriaBooster.agregarProducto(new Product(27, 'Booster Box Blue Sky Stream [KR]', 95.00, 'Caja coreana de Blue Sky Stream, con posibilidad de Rayquaza VMAX.', 'booster', 'https://product-images.tcgplayer.com/fit-in/1000x1000/565343.jpg'));
-        categoriaBooster.agregarProducto(new Product(28, 'Booster Bundle 151', 28.95, 'Lote de 6 sobres de la colección 151 en inglés.', 'booster', 'https://www.serebii.net/card/sv151/boosterbundle.jpg'));
+        // --- 6. BLISTER PACKS ---
+        catBlisters.agregarProducto(new Product(601, 'Blister Pack – Héroes Ascendentes [ES]', 12.95, 'Arte aleatorio. Incluye moneda.', 'blister-packs', 'https://product-images.tcgplayer.com/fit-in/400x400/223126.jpg'));
+        catBlisters.agregarProducto(new Product(602, 'Blister Pack – Llama Blanca [ES]', 14.95, 'Incluye pegatina exclusiva.', 'blister-packs', 'https://product-images.tcgplayer.com/fit-in/400x400/223126.jpg'));
+        catBlisters.agregarProducto(new Product(603, 'Blister Pack – Fulgor Negro [ES]', 14.95, 'Incluye pegatina y carta foil.', 'blister-packs', 'https://product-images.tcgplayer.com/fit-in/400x400/223126.jpg'));
 
-        return [categoriaPokemon, categoriaEntrenador, categoriaEnergia, categoriaAccesorios, categoriaETB, categoriaBooster];
+        // --- 7. BUILD & BATTLE ---
+        catBuildBattle.agregarProducto(new Product(701, 'Build & Battle Box – Set Competitivo', 19.95, 'Kit de prelanzamiento listo para jugar.', 'build-battle', 'https://product-images.tcgplayer.com/fit-in/400x400/485072.jpg'));
+        catBuildBattle.agregarProducto(new Product(702, 'Build & Battle Stadium – Edición Torneo', 59.95, 'Estadio completo para dos jugadores.', 'build-battle', 'https://product-images.tcgplayer.com/fit-in/400x400/485072.jpg'));
+
+        // --- 8. BATTLE DECKS ---
+        catBattleDecks.agregarProducto(new Product(801, 'Battle Deck – Mewtwo EX Team Rocket [ES]', 14.95, 'Mazo temático nivel 2.', 'battle-decks', 'https://product-images.tcgplayer.com/fit-in/400x400/503043.jpg'));
+        catBattleDecks.agregarProducto(new Product(802, 'Battle Deck – Edición Competitiva', 29.95, 'Mazo nivel 3 para torneos.', 'battle-decks', 'https://product-images.tcgplayer.com/fit-in/400x400/503043.jpg'));
+
+        // --- 9. ULTRA-PREMIUM COLLECTIONS ---
+        catUPC.agregarProducto(new Product(901, 'UPC – Edición Legendaria', 129.95, 'La colección definitiva con cartas de metal.', 'upc', 'https://product-images.tcgplayer.com/fit-in/400x400/450096.jpg', true));
+
+        // --- 10. PREMIUM COLLECTIONS ---
+        catPremium.agregarProducto(new Product(1001, 'Premium Collection – Pokémon Day 2026', 49.95, 'Celebración del día Pokémon.', 'premium', 'https://product-images.tcgplayer.com/fit-in/400x400/509043.jpg'));
+        catPremium.agregarProducto(new Product(1002, 'Premium Collection – Ilustración Victini [ES]', 39.95, 'Arte completo de Victini.', 'premium', 'https://product-images.tcgplayer.com/fit-in/400x400/509043.jpg'));
+
+        // --- 11. BATTLE BOXES ---
+        catBattleBoxes.agregarProducto(new Product(1101, 'Battle Box – Entrenador Avanzado', 24.95, 'Herramientas para mejorar tu juego.', 'battle-boxes', 'https://product-images.tcgplayer.com/fit-in/400x400/260278.jpg'));
+        catBattleBoxes.agregarProducto(new Product(1102, 'Battle Box – Edición Combate', 24.95, 'Accesorios de combate.', 'battle-boxes', 'https://product-images.tcgplayer.com/fit-in/400x400/260278.jpg'));
+
+        // --- 12. ACCESORIOS ---
+        catAccesorios.agregarProducto(new Product(1201, 'Fundas – PSA Slab Bumper Case', 4.95, 'Protector de silicona para slabs.', 'accesorios', 'https://m.media-amazon.com/images/I/61+y5y-pG1L._AC_SL1001_.jpg'));
+        catAccesorios.agregarProducto(new Product(1202, 'Fundas – Ultra Pro 3x4 Toploader (25)', 5.95, 'Pack de 25 toploaders rígidos.', 'accesorios', 'https://m.media-amazon.com/images/I/61+y5y-pG1L._AC_SL1001_.jpg'));
+        catAccesorios.agregarProducto(new Product(1203, 'Fundas – Ultra Pro PSA Cards (100)', 2.95, 'Fundas ajustadas para tarjetas PSA.', 'accesorios', 'https://m.media-amazon.com/images/I/61+y5y-pG1L._AC_SL1001_.jpg'));
+        catAccesorios.agregarProducto(new Product(1204, 'Álbum – 9 Bolsillos Pro Binder Gengar', 34.95, 'Álbum premium de Gengar.', 'accesorios', 'https://m.media-amazon.com/images/I/71Y-3q9Q5+L._AC_SY879_.jpg', true));
+        catAccesorios.agregarProducto(new Product(1205, 'Álbum – 12 Bolsillos Pro Binder Gengar', 44.95, 'Versión grande de 12 bolsillos.', 'accesorios', 'https://m.media-amazon.com/images/I/71Y-3q9Q5+L._AC_SY879_.jpg'));
+        catAccesorios.agregarProducto(new Product(1206, 'Deck Box – Elite Gengar', 14.95, 'Caja de mazo a juego.', 'accesorios', 'https://m.media-amazon.com/images/I/71wF74-qLBL._AC_SY879_.jpg'));
+        catAccesorios.agregarProducto(new Product(1207, 'Deck Box – Edición Premium', 19.95, 'Acabado en cuero sintético.', 'accesorios', 'https://m.media-amazon.com/images/I/71wF74-qLBL._AC_SY879_.jpg'));
+
+        return [
+            catBoosterBoxes, catBoosterPacks, catBoosterBundles, catETB, catTinsChests,
+            catBlisters, catBuildBattle, catBattleDecks, catUPC, catPremium,
+            catBattleBoxes, catAccesorios
+        ];
     }
 }

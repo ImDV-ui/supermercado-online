@@ -14,53 +14,28 @@ export class ProductView {
 
         productos.forEach(producto => {
             const card = document.createElement('article');
-            card.className = `product-card ${producto.destacado ? 'featured' : ''}`;
+            card.className = 'product-card';
 
-            const image = document.createElement('img');
-            image.src = producto.imagen; // En un caso real, manejar error de carga
-            image.alt = producto.nombre;
-            image.className = 'product-image';
-
-            // Fallback imagen si falla
-            image.onerror = () => {
-                image.src = 'https://placehold.co/300x400?text=No+Image';
-            };
+            // Placeholder de imagen (Gris como en la referencia si no hay imagen)
+            const imgContainer = document.createElement('div');
+            imgContainer.className = 'image-placeholder';
+            imgContainer.textContent = 'IMG';
 
             const info = document.createElement('div');
             info.className = 'product-info';
-
-            const categoryTag = document.createElement('span');
-            categoryTag.className = 'product-category';
-            categoryTag.textContent = producto.categoria;
 
             const title = document.createElement('h3');
             title.className = 'product-name';
             title.textContent = producto.nombre;
 
-            const desc = document.createElement('p');
-            desc.className = 'product-description';
-            desc.textContent = producto.descripcion;
-
-            const priceContainer = document.createElement('div');
-            priceContainer.className = 'product-price';
-
-            const price = document.createElement('span');
+            const price = document.createElement('div');
+            price.className = 'product-price';
             price.textContent = `${producto.precio.toFixed(2)} €`;
 
-            const btn = document.createElement('button');
-            btn.className = 'add-to-cart';
-            btn.textContent = 'Añadir';
-            btn.onclick = () => alert(`Añadido ${producto.nombre} al carrito`);
-
-            priceContainer.appendChild(price);
-            priceContainer.appendChild(btn);
-
-            info.appendChild(categoryTag);
             info.appendChild(title);
-            info.appendChild(desc);
-            info.appendChild(priceContainer);
+            info.appendChild(price);
 
-            card.appendChild(image);
+            card.appendChild(imgContainer);
             card.appendChild(info);
 
             this.element.appendChild(card);
