@@ -21,7 +21,7 @@ export class ProductDatabase {
         const DEFAULT_IMG = 'https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE';
 
         // --- 1. BOOSTER BOXES ---
-        catBoosterBoxes.agregarProducto(new Product(101, 'Booster Box – Battle Partners [JP]', 77.95, 'Caja de 30 sobres. Enfocada en combates dobles y aliados.', 'booster-boxes', DEFAULT_IMG, true));
+        catBoosterBoxes.agregarProducto(new Product(101, 'Booster Box – Battle Partners [JP]', 77.95, 'Caja de 30 sobres. Enfocada en combates dobles y aliados.', 'booster-boxes', 'imagenes/1-9b0c5193.png', true));
         catBoosterBoxes.agregarProducto(new Product(102, 'Booster Box – Mega Brave [JP]', 89.95, 'Edición japonesa con cartas exclusivas.', 'booster-boxes', DEFAULT_IMG));
 
         // --- 2. BOOSTER PACKS ---
@@ -33,11 +33,11 @@ export class ProductDatabase {
 
         // --- 3. BOOSTER BUNDLES ---
         catBoosterBundles.agregarProducto(new Product(301, 'Booster Bundle – Héroes Ascendentes [ES]', 26.95, 'Lote de 6 sobres.', 'booster-bundles', DEFAULT_IMG));
-        catBoosterBundles.agregarProducto(new Product(302, 'Booster Bundle – Edición Especial', 29.95, 'Lote especial con promo.', 'booster-bundles', DEFAULT_IMG, true));
+        catBoosterBundles.agregarProducto(new Product(302, 'Booster Bundle – Edición Especial', 29.95, 'Lote especial con promo.', 'booster-bundles', 'imagenes/1-9b7cdd26.png', true));
 
         // --- 4. ELITE TRAINER BOXES ---
         catETB.agregarProducto(new Product(401, 'Elite Trainer Box – Héroes Ascendentes [ES]', 49.95, 'Caja de Entrenador Élite completa.', 'etb', DEFAULT_IMG));
-        catETB.agregarProducto(new Product(402, 'Elite Trainer Box – Edición Especial', 59.95, 'ETB Exclusiva Pokémon Center.', 'etb', DEFAULT_IMG, true));
+        catETB.agregarProducto(new Product(402, 'Elite Trainer Box – Edición Especial', 59.95, 'ETB Exclusiva Pokémon Center.', 'etb', 'imagenes/1-7afbe4df.png', true));
 
         // --- 5. TINS & CHESTS ---
         catTinsChests.agregarProducto(new Product(501, 'Tin Pokémon – Edición Coleccionista', 24.95, 'Lata metálica con sobres y carta promo.', 'tins-chests', DEFAULT_IMG));
@@ -57,7 +57,7 @@ export class ProductDatabase {
         catBattleDecks.agregarProducto(new Product(802, 'Battle Deck – Edición Competitiva', 29.95, 'Mazo nivel 3 para torneos.', 'battle-decks', DEFAULT_IMG));
 
         // --- 9. ULTRA-PREMIUM COLLECTIONS ---
-        catUPC.agregarProducto(new Product(901, 'UPC – Edición Legendaria', 129.95, 'La colección definitiva con cartas de metal.', 'upc', DEFAULT_IMG, true));
+        catUPC.agregarProducto(new Product(901, 'Pokemon TCG Charizard EX Super Premium Collection Inglés', 129.95, 'La colección definitiva con cartas de metal.', 'upc', 'imagenes/1-0d1fb98d.png', true));
 
         // --- 10. PREMIUM COLLECTIONS ---
         catPremium.agregarProducto(new Product(1001, 'Premium Collection – Pokémon Day 2026', 49.95, 'Celebración del día Pokémon.', 'premium', DEFAULT_IMG));
