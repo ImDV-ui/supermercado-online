@@ -1,6 +1,11 @@
 export class CartService {
     constructor() {
-        this.cart = JSON.parse(localStorage.getItem('cart')) || [];
+        try {
+            const stored = JSON.parse(localStorage.getItem('cart'));
+            this.cart = Array.isArray(stored) ? stored : [];
+        } catch (e) {
+            this.cart = [];
+        }
         this.taxRate = 0.21;
         this.shippingCost = 4.95;
         this.freeShippingThreshold = 50.00;
