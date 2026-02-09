@@ -1,4 +1,5 @@
 import { CartService } from './services/CartService.js';
+import { ProductDatabase } from './database/productDatabase.js';
 import { UserService } from './services/UserService.js';
 import { HeaderView } from './views/HeaderView.js';
 import { FooterView } from './views/FooterView.js';
@@ -20,6 +21,7 @@ export class Main {
     }
 
     async init() {
+        await ProductDatabase.init();
 
         this.appElement.innerHTML = '';
 

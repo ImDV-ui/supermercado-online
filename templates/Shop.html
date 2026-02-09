@@ -1,0 +1,30 @@
+<div
+    style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--border-color); padding-bottom: 20px;">
+    <div>
+        <span
+            style="font-size: 0.8rem; color: var(--brand-accent); font-weight: bold; letter-spacing: 2px;">EXPLORAR</span>
+        <h1 style="font-size: 3.5rem; margin-top: 10px;" id="shop-title"></h1>
+    </div>
+    <div style="text-align: right;">
+        <span style="color: var(--text-secondary); font-size: 0.9rem;" id="product-count"></span>
+    </div>
+</div>
+<div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+    <div class="category-pills" id="category-pills"
+        style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px;">
+    </div>
+
+    <div style="position: relative;">
+        <select id="sort-select"
+            style="padding: 10px 40px 10px 15px; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary); font-family: inherit; cursor: pointer; appearance: none;">
+            <option value="featured">RELEVANCIA</option>
+            <option value="price-asc">PRECIO: MENOR A MAYOR</option>
+            <option value="price-desc">PRECIO: MAYOR A MENOR</option>
+        </select>
+        <span
+            style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); pointer-events: none; font-size: 0.7rem; color: var(--text-primary);">▼</span>
+    </div>
+</div>
+
+<div class="products-grid" id="shop-grid">
+</div>

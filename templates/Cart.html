@@ -1,0 +1,30 @@
+<h1 style="margin-bottom: 40px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px;">CARRITO</h1>
+<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 60px;">
+    <div class="cart-items" id="cart-items-container">
+    </div>
+    <div class="cart-summary" style="height: fit-content;">
+        <h3 style="margin-bottom: 25px; font-size: 1.2rem;">RESUMEN DEL PEDIDO</h3>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 15px; color: var(--text-secondary);">
+            <span>Subtotal</span>
+            <span style="color: var(--text-primary);" id="subtotal"></span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 15px; color: var(--text-secondary);">
+            <span>IVA (21%)</span>
+            <span style="color: var(--text-primary);" id="tax"></span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 25px; color: var(--text-secondary);">
+            <span>Envío Asegurado</span>
+            <span style="color: var(--text-primary);" id="shipping"></span>
+        </div>
+        <div
+            style="display: flex; justify-content: space-between; margin-bottom: 30px; font-weight: bold; font-size: 1.4rem; border-top: 1px solid var(--border-color); padding-top: 20px;">
+            <span>TOTAL</span>
+            <span id="total"></span>
+        </div>
+        <a href="#/checkout" class="btn"
+            style="width: 100%; text-align: center; background: var(--text-primary); color: black;">FINALIZAR COMPRA</a>
+        <div style="text-align: center; margin-top: 20px; font-size: 0.75rem; color: var(--text-secondary);">
+            PAGO SEGURO Y DISCRETO
+        </div>
+    </div>
+</div>

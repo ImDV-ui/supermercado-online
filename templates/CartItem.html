@@ -1,0 +1,19 @@
+<div class="cart-item">
+    <img src="${imagen}" alt="${nombre}">
+    <div style="flex-grow: 1;">
+        <div style="display: flex; justify-content: space-between;">
+            <h3 style="font-size: 1rem;">${nombre}</h3>
+            <button class="remove-btn" data-id="${id}"
+                style="color: var(--text-secondary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;">Eliminar</button>
+        </div>
+        <p style="color: var(--text-secondary); margin: 5px 0;">${precio} €</p>
+        <div style="display: flex; align-items: center; gap: 15px; margin-top: 15px;">
+            <span style="font-size: 0.8rem; color: var(--text-secondary);">CANTIDAD</span>
+            <input type="number" class="qty-update" data-id="${id}" value="${quantity}" min="1"
+                style="background: transparent; border: 1px solid var(--border-color); color: white; padding: 5px; width: 60px; text-align: center;">
+        </div>
+    </div>
+    <div style="font-weight: bold; font-size: 1.1rem;">
+        ${totalItem} €
+    </div>
+</div>

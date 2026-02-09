@@ -1,0 +1,362 @@
+[
+  {
+    "id": "booster-boxes",
+    "nombre": "Booster Boxes",
+    "productos": [
+      {
+        "id": 101,
+        "nombre": "Booster Box – Battle Partners [JP]",
+        "precio": 77.95,
+        "descripcion": "Caja de 30 sobres. Enfocada en combates dobles y aliados.",
+        "categoria": "booster-boxes",
+        "imagen": "imagenes/1-9b0c5193.png",
+        "destacado": true
+      },
+      {
+        "id": 102,
+        "nombre": "Booster Box – Mega Brave [JP]",
+        "precio": 89.95,
+        "descripcion": "Edición japonesa con cartas exclusivas.",
+        "categoria": "booster-boxes",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      }
+    ]
+  },
+  {
+    "id": "booster-packs",
+    "nombre": "Booster Packs",
+    "productos": [
+      {
+        "id": 201,
+        "nombre": "Booster Pack – Héroes Ascendentes [ES]",
+        "precio": 4.95,
+        "descripcion": "Sobre individual en español.",
+        "categoria": "booster-packs",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 202,
+        "nombre": "Booster Pack – Mega Brave [KR]",
+        "precio": 3.95,
+        "descripcion": "Sobre coreano económico.",
+        "categoria": "booster-packs",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 203,
+        "nombre": "Booster Pack – Mega Symphonia [KR]",
+        "precio": 3.95,
+        "descripcion": "Sobre coreano de alta demanda.",
+        "categoria": "booster-packs",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 204,
+        "nombre": "Booster Pack – Inferno X [JP]",
+        "precio": 5.95,
+        "descripcion": "Sobre japonés con arts secretos.",
+        "categoria": "booster-packs",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 205,
+        "nombre": "Booster Pack – Battle Partners [JP]",
+        "precio": 5.95,
+        "descripcion": "Sobre japonés enfocado en Tag Teams.",
+        "categoria": "booster-packs",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      }
+    ]
+  },
+  {
+    "id": "booster-bundles",
+    "nombre": "Booster Bundles",
+    "productos": [
+      {
+        "id": 301,
+        "nombre": "Booster Bundle – Héroes Ascendentes [ES]",
+        "precio": 26.95,
+        "descripcion": "Lote de 6 sobres.",
+        "categoria": "booster-bundles",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 302,
+        "nombre": "Booster Bundle – Edición Especial",
+        "precio": 29.95,
+        "descripcion": "Lote especial con promo.",
+        "categoria": "booster-bundles",
+        "imagen": "imagenes/1-9b7cdd26.png",
+        "destacado": true
+      }
+    ]
+  },
+  {
+    "id": "etb",
+    "nombre": "Elite Trainer Boxes",
+    "productos": [
+      {
+        "id": 401,
+        "nombre": "Elite Trainer Box – Héroes Ascendentes [ES]",
+        "precio": 49.95,
+        "descripcion": "Caja de Entrenador Élite completa.",
+        "categoria": "etb",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 402,
+        "nombre": "Elite Trainer Box – Edición Especial",
+        "precio": 59.95,
+        "descripcion": "ETB Exclusiva Pokémon Center.",
+        "categoria": "etb",
+        "imagen": "imagenes/1-7afbe4df.png",
+        "destacado": true
+      }
+    ]
+  },
+  {
+    "id": "tins-chests",
+    "nombre": "Tins & Chests",
+    "productos": [
+      {
+        "id": 501,
+        "nombre": "Tin Pokémon – Edición Coleccionista",
+        "precio": 24.95,
+        "descripcion": "Lata metálica con sobres y carta promo.",
+        "categoria": "tins-chests",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 502,
+        "nombre": "Chest Pokémon – Edición Especial",
+        "precio": 34.95,
+        "descripcion": "Cofre del tesoro con artículos variados.",
+        "categoria": "tins-chests",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      }
+    ]
+  },
+  {
+    "id": "blister-packs",
+    "nombre": "Blister Packs",
+    "productos": [
+      {
+        "id": 601,
+        "nombre": "Blister Pack – Héroes Ascendentes [ES]",
+        "precio": 12.95,
+        "descripcion": "Arte aleatorio. Incluye moneda.",
+        "categoria": "blister-packs",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 602,
+        "nombre": "Blister Pack – Llama Blanca [ES]",
+        "precio": 14.95,
+        "descripcion": "Incluye pegatina exclusiva.",
+        "categoria": "blister-packs",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 603,
+        "nombre": "Blister Pack – Fulgor Negro [ES]",
+        "precio": 14.95,
+        "descripcion": "Incluye pegatina y carta foil.",
+        "categoria": "blister-packs",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      }
+    ]
+  },
+  {
+    "id": "build-battle",
+    "nombre": "Build & Battle",
+    "productos": [
+      {
+        "id": 701,
+        "nombre": "Build & Battle Box – Set Competitivo",
+        "precio": 19.95,
+        "descripcion": "Kit de prelanzamiento listo para jugar.",
+        "categoria": "build-battle",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 702,
+        "nombre": "Build & Battle Stadium – Edición Torneo",
+        "precio": 59.95,
+        "descripcion": "Estadio completo para dos jugadores.",
+        "categoria": "build-battle",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      }
+    ]
+  },
+  {
+    "id": "battle-decks",
+    "nombre": "Battle Decks",
+    "productos": [
+      {
+        "id": 801,
+        "nombre": "Battle Deck – Mewtwo EX Team Rocket [ES]",
+        "precio": 14.95,
+        "descripcion": "Mazo temático nivel 2.",
+        "categoria": "battle-decks",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 802,
+        "nombre": "Battle Deck – Edición Competitiva",
+        "precio": 29.95,
+        "descripcion": "Mazo nivel 3 para torneos.",
+        "categoria": "battle-decks",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      }
+    ]
+  },
+  {
+    "id": "upc",
+    "nombre": "Ultra-Premium Collections",
+    "productos": [
+      {
+        "id": 901,
+        "nombre": "Pokemon TCG Charizard EX Super Premium Collection Inglés",
+        "precio": 129.95,
+        "descripcion": "La colección definitiva con cartas de metal.",
+        "categoria": "upc",
+        "imagen": "imagenes/1-0d1fb98d.png",
+        "destacado": true
+      }
+    ]
+  },
+  {
+    "id": "premium",
+    "nombre": "Premium Collections",
+    "productos": [
+      {
+        "id": 1001,
+        "nombre": "Premium Collection – Pokémon Day 2026",
+        "precio": 49.95,
+        "descripcion": "Celebración del día Pokémon.",
+        "categoria": "premium",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 1002,
+        "nombre": "Premium Collection – Ilustración Victini [ES]",
+        "precio": 39.95,
+        "descripcion": "Arte completo de Victini.",
+        "categoria": "premium",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      }
+    ]
+  },
+  {
+    "id": "battle-boxes",
+    "nombre": "Battle Boxes",
+    "productos": [
+      {
+        "id": 1101,
+        "nombre": "Battle Box – Entrenador Avanzado",
+        "precio": 24.95,
+        "descripcion": "Herramientas para mejorar tu juego.",
+        "categoria": "battle-boxes",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 1102,
+        "nombre": "Battle Box – Edición Combate",
+        "precio": 24.95,
+        "descripcion": "Accesorios de combate.",
+        "categoria": "battle-boxes",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      }
+    ]
+  },
+  {
+    "id": "accesorios",
+    "nombre": "Accesorios",
+    "productos": [
+      {
+        "id": 1201,
+        "nombre": "Fundas – PSA Slab Bumper Case",
+        "precio": 4.95,
+        "descripcion": "Protector de silicona para slabs.",
+        "categoria": "accesorios",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 1202,
+        "nombre": "Fundas – Ultra Pro 3x4 Toploader (25)",
+        "precio": 5.95,
+        "descripcion": "Pack de 25 toploaders rígidos.",
+        "categoria": "accesorios",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 1203,
+        "nombre": "Fundas – Ultra Pro PSA Cards (100)",
+        "precio": 2.95,
+        "descripcion": "Fundas ajustadas para tarjetas PSA.",
+        "categoria": "accesorios",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 1204,
+        "nombre": "Álbum – 9 Bolsillos Pro Binder Gengar",
+        "precio": 34.95,
+        "descripcion": "Álbum premium de Gengar.",
+        "categoria": "accesorios",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": true
+      },
+      {
+        "id": 1205,
+        "nombre": "Álbum – 12 Bolsillos Pro Binder Gengar",
+        "precio": 44.95,
+        "descripcion": "Versión grande de 12 bolsillos.",
+        "categoria": "accesorios",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 1206,
+        "nombre": "Deck Box – Elite Gengar",
+        "precio": 14.95,
+        "descripcion": "Caja de mazo a juego.",
+        "categoria": "accesorios",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      },
+      {
+        "id": 1207,
+        "nombre": "Deck Box – Edición Premium",
+        "precio": 19.95,
+        "descripcion": "Acabado en cuero sintético.",
+        "categoria": "accesorios",
+        "imagen": "https://placehold.co/400x560/141414/f2c94c?text=NO+IMAGE",
+        "destacado": false
+      }
+    ]
+  }
+]

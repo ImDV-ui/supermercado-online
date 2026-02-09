@@ -25,7 +25,6 @@ export class ShopView {
                 title = `BUSCANDO: "${filterCategory.search}"`;
                 filterCategory = null;
             } else {
-                // Category Mode
                 const categoryObj = this.categories.find(c => c.id === filterCategory);
                 if (categoryObj) {
                     productsToShow = [...categoryObj.productos];
@@ -34,52 +33,45 @@ export class ShopView {
             }
         }
 
-        const header = document.createElement('div');
-        header.style.marginBottom = '60px';
-        header.innerHTML = `
-            <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--border-color); padding-bottom: 20px;">
-                <div>
-                    <span style="font-size: 0.8rem; color: var(--brand-accent); font-weight: bold; letter-spacing: 2px;">EXPLORAR</span>
-                    <h1 style="font-size: 3.5rem; margin-top: 10px;">${title}</h1>
-                </div>
-                <div style="text-align: right;">
-                    <span style="color: var(--text-secondary); font-size: 0.9rem;">${productsToShow.length} ARTÍCULOS</span>
-                </div>
-            </div>
-            <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: center;">
-                <div class="category-pills" style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px;">
-                    <a href="#/shop" class="btn" style="padding: 10px 20px; font-size: 0.8rem; ${!filterCategory ? 'background: var(--text-primary); color: var(--bg-main);' : ''}">TODO</a>
-                    ${this.categories.slice(0, 5).map(c => `
-                        <a href="#/shop/${c.id}" class="btn" style="padding: 10px 20px; font-size: 0.8rem; ${filterCategory === c.id ? 'background: var(--text-primary); color: var(--bg-main);' : ''}">${c.nombre}</a>
-                    `).join('')}
-                </div>
-                
-                <div style="position: relative;">
-                    <select id="sort-select" style="padding: 10px 40px 10px 15px; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary); font-family: inherit; cursor: pointer; appearance: none;">
-                        <option value="featured">RELEVANCIA</option>
-                        <option value="price-asc">PRECIO: MENOR A MAYOR</option>
-                        <option value="price-desc">PRECIO: MAYOR A MENOR</option>
-                    </select>
-                    <span style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); pointer-events: none; font-size: 0.7rem; color: var(--text-primary);">▼</span>
-                </div>
-            </div>
-        `;
+        try {
+            const response = await fetch('templates/Shop.html');
+            const html = await response.text();
+            container.innerHTML = html;
 
-        const grid = document.createElement('div');
-        grid.className = 'products-grid';
-        grid.id = 'shop-grid';
+            container.querySelector('#shop-title').textContent = title;
+            container.querySelector('#product-count').textContent = `${productsToShow.length} ARTÍCULOS`;
 
-        this.renderGridItems(grid, productsToShow);
+            const pillsContainer = container.querySelector('#category-pills');
+            const allLink = document.createElement('a');
+            allLink.href = '#/shop';
+            allLink.className = 'btn';
+            allLink.style.cssText = `padding: 10px 20px; font-size: 0.8rem; ${!filterCategory ? 'background: var(--text-primary); color: var(--bg-main);' : ''}`;
+            allLink.textContent = 'TODO';
+            pillsContainer.appendChild(allLink);
 
-        const sortSelect = header.querySelector('#sort-select');
-        sortSelect.addEventListener('change', (e) => {
-            const sortValue = e.target.value;
-            this.sortProducts(productsToShow, sortValue);
-            this.renderGridItems(grid, productsToShow);
-        });
+            this.categories.slice(0, 5).forEach(c => {
+                const link = document.createElement('a');
+                link.href = `#/shop/${c.id}`;
+                link.className = 'btn';
+                link.style.cssText = `padding: 10px 20px; font-size: 0.8rem; ${filterCategory === c.id ? 'background: var(--text-primary); color: var(--bg-main);' : ''}`;
+                link.textContent = c.nombre;
+                pillsContainer.appendChild(link);
+            });
 
-        container.appendChild(header);
-        container.appendChild(grid);
+            const grid = container.querySelector('#shop-grid');
+            await this.renderGridItems(grid, productsToShow);
+
+            const sortSelect = container.querySelector('#sort-select');
+            sortSelect.addEventListener('change', (e) => {
+                const sortValue = e.target.value;
+                this.sortProducts(productsToShow, sortValue);
+                this.renderGridItems(grid, productsToShow);
+            });
+
+        } catch (error) {
+            console.error('Error loading shop template:', error);
+            container.innerHTML = '<h2>Error loading shop</h2>';
+        }
 
         return container;
     }
@@ -94,31 +86,48 @@ export class ShopView {
         }
     }
 
-    renderGridItems(container, products) {
+    async renderGridItems(container, products) {
         if (products.length > 0) {
-            container.innerHTML = products.map(p => this.createProductCard(p)).join('');
+            const response = await fetch('templates/ProductCard.html');
+            const template = await response.text();
+
+            container.innerHTML = products.map(p => this.createProductCard(p, template)).join('');
+
+            const cards = container.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    window.location.hash = `#/product/${card.dataset.id}`;
+                });
+            });
+
         } else {
             container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary); margin-top: 40px;">No se encontraron productos en esta categoría.</p>';
         }
     }
 
-    createProductCard(product) {
+    createProductCard(product, template) {
         const isNew = product.id > 1000;
         const badge = isNew ? '<span class="badge">NUEVO</span>' : '';
 
-        return `
-            <div class="product-card" onclick="window.location.hash='#/product/${product.id}'">
-                <div style="position: relative;">
-                    ${badge}
-                    <img src="${product.imagen}" alt="${product.nombre}" loading="lazy">
-                </div>
-                <div class="product-info-container">
-                    <p class="product-category">${product.categoria.toUpperCase()}</p>
-                    <h3 class="product-title">${product.nombre}</h3>
-                    <div class="price">${product.precio.toFixed(2)} €</div>
-                    <span class="button-buy">VER DETALLES</span>
-                </div>
-            </div>
-        `;
+        let cardHtml = template
+            .replace('${id}', product.id)
+            .replace('${id}', product.id)
+            .replace('${badge}', badge)
+            .replace('${imagen}', product.imagen)
+            .replace('${nombre}', product.nombre)
+            .replace('${nombre}', product.nombre)
+            .replace('${categoria}', product.categoria.toUpperCase())
+            .replace('${nombre}', product.nombre)
+            .replace('${precio}', product.precio.toFixed(2));
+
+        cardHtml = template
+            .split('${id}').join(product.id)
+            .split('${badge}').join(badge)
+            .split('${imagen}').join(product.imagen)
+            .split('${nombre}').join(product.nombre)
+            .split('${categoria}').join(product.categoria.toUpperCase())
+            .split('${precio}').join(product.precio.toFixed(2));
+
+        return cardHtml;
     }
 }

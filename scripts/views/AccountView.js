@@ -19,85 +19,56 @@ export class AccountView {
         return container;
     }
 
-    renderLogin(container) {
-        container.innerHTML = `
-            <div style="text-align: center; margin-bottom: 40px;">
-                <h1 style="margin-bottom: 10px;">ACCESO CLIENTES</h1>
-                <p style="color: var(--text-sec);">Inicia sesión para ver tus pedidos y wishlist</p>
-            </div>
-            
-            <div style="border: 1px solid var(--border); padding: 40px; border-radius: 8px;">
-                <form id="login-form">
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" id="email" required placeholder="demo@user.com">
-                    </div>
-                    <div class="form-group">
-                        <label>Contraseña</label>
-                        <input type="password" id="password" required placeholder="******">
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">INICIAR SESIÓN</button>
-                    <div style="text-align: center; margin-top: 20px; font-size: 0.8rem;">
-                        <span style="color: var(--text-sec);">¿No tienes cuenta?</span> <a href="#" style="text-decoration: underline;">Regístrate</a>
-                    </div>
-                </form>
-            </div>
-        `;
+    async renderLogin(container) {
+        try {
+            const response = await fetch('templates/AccountLogin.html');
+            const html = await response.text();
+            container.innerHTML = html;
 
-        const form = container.querySelector('#login-form');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = form.querySelector('#email').value;
-            const pass = form.querySelector('#password').value;
+            const form = container.querySelector('#login-form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = form.querySelector('#email').value;
+                const pass = form.querySelector('#password').value;
 
-            if (this.userService.login(email, pass)) {
-                window.location.reload();
-            }
-        });
+                if (this.userService.login(email, pass)) {
+                    window.location.reload();
+                }
+            });
+        } catch (error) {
+            console.error('Error loading login template:', error);
+            container.innerHTML = '<h2>Error loading login form</h2>';
+        }
     }
 
-    renderDashboard(container) {
+    async renderDashboard(container) {
         const user = this.userService.getUser();
 
-        container.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 40px;">
-                <img src="${user.avatar}" alt="Avatar" style="width: 80px; height: 80px; border-radius: 50%;">
-                <div>
-                    <h1>Hola, ${user.name}</h1>
-                    <p style="color: var(--text-sec);">${user.email}</p>
-                </div>
-            </div>
+        try {
+            const response = await fetch('templates/AccountDashboard.html');
+            let html = await response.text();
 
-            <div style="display: grid; gap: 30px;">
-                <div style="border: 1px solid var(--border); padding: 20px; border-radius: 8px;">
-                    <h3 style="margin-bottom: 20px;">MIS PEDIDOS RECIENTES</h3>
-                    <div style="background: var(--bg-secondary); padding: 15px; border-radius: 4px; margin-bottom: 10px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <strong>#94821 - Entregado</strong>
-                            <span>150.00 €</span>
-                        </div>
-                        <p style="font-size: 0.85rem; color: var(--text-sec); margin-top: 5px;">3 artículos • 01/02/2026</p>
-                    </div>
-                     <div style="background: var(--bg-secondary); padding: 15px; border-radius: 4px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <strong>#82103 - En Proceso</strong>
-                            <span>45.95 €</span>
-                        </div>
-                        <p style="font-size: 0.85rem; color: var(--text-sec); margin-top: 5px;">1 artículo • 03/02/2026</p>
-                    </div>
-                </div>
+            html = html.replace('${avatar}', user.avatar)
+                .replace('${name}', user.name)
+                .replace('${email}', user.email);
 
-                <div style="border: 1px solid var(--border); padding: 20px; border-radius: 8px;">
-                     <h3 style="margin-bottom: 20px;">MI WISHLIST</h3>
-                     <p>No tienes artículos guardados aún.</p>
-                </div>
-                
-                <button id="logout-btn" class="btn" style="border-color: red; color: red;">CERRAR SESIÓN</button>
-            </div>
-        `;
+            container.innerHTML = html;
 
-        container.querySelector('#logout-btn').onclick = () => {
-            this.userService.logout();
-        };
+            const avatarImg = container.querySelector('#user-avatar');
+            if (avatarImg) avatarImg.src = user.avatar;
+
+            const nameEl = container.querySelector('#user-name');
+            if (nameEl) nameEl.textContent = `Hola, ${user.name}`;
+
+            const emailEl = container.querySelector('#user-email');
+            if (emailEl) emailEl.textContent = user.email;
+
+            container.querySelector('#logout-btn').onclick = () => {
+                this.userService.logout();
+            };
+        } catch (error) {
+            console.error('Error loading dashboard template:', error);
+            container.innerHTML = '<h2>Error loading dashboard</h2>';
+        }
     }
 }

@@ -11,79 +11,45 @@ export class HomeView {
         const container = document.createElement('div');
         container.className = 'home-view';
 
-        const hero = document.createElement('section');
-        hero.className = 'hero-section fade-in';
-        hero.innerHTML = `
-            <div class="container hero-content">
-                <span class="hero-subtitle">COLECCIONABLES PREMIUM TCG</span>
-                <h1 class="hero-title">EL ÚLTIMO<br>Y ME VOY</h1>
-                <p>Tu destino definitivo para cartas Pokémon de importación japonesa, coreana y ediciones exclusivas.</p>
-                <div class="hero-actions">
-                    <a href="#/shop" class="btn">VER COLECCIÓN</a>
-                    <a href="#/shop/booster-boxes" class="btn btn-outline">VER CAJAS</a>
-                </div>
-            </div>
-        `;
+        try {
+            const response = await fetch('templates/Home.html');
+            const html = await response.text();
+            container.innerHTML = html;
 
-        const featured = document.createElement('section');
-        featured.className = 'container fade-in';
-        featured.style.marginBottom = '80px';
-        featured.style.animationDelay = '0.2s';
+            const cardResponse = await fetch('templates/ProductCard.html');
+            const cardTemplate = await cardResponse.text();
 
-        featured.innerHTML = `
-            <div class="section-header">
-                <h2 class="section-title">DESTACADOS</h2>
-                <a href="#/shop" class="view-all-link">Ver todo</a>
-            </div>
-            <div class="products-grid">
-                ${this.featuredProducts.map(product => this.createProductCard(product)).join('')}
-            </div>
-        `;
+            const grid = container.querySelector('#featured-products-grid');
+            if (grid) {
+                grid.innerHTML = this.featuredProducts.map(product => this.createProductCard(product, cardTemplate)).join('');
 
-        const banner = document.createElement('section');
-        banner.className = 'fade-in';
-        banner.style.borderTop = '1px solid var(--border-color)';
-        banner.style.padding = '100px 0';
-        banner.style.textAlign = 'center';
-        banner.style.marginTop = '80px';
-        banner.style.animationDelay = '0.4s';
+                grid.querySelectorAll('.product-card').forEach(card => {
+                    card.onclick = () => window.location.hash = `#/product/${card.dataset.id}`;
+                });
+            }
 
-        banner.innerHTML = `
-            <div class="container">
-                <span class="mission-label">NUESTRA MISIÓN</span>
-                <h2 class="mission-title">LA BÚSQUEDA TERMINA AQUÍ</h2>
-                <p class="mission-text">
-                    Nos dedicamos a traer las rarezas que faltan en tu carpeta. 
-                    Piezas seleccionadas para el coleccionista exigente.
-                </p>
-            </div>
-        `;
-
-        container.appendChild(hero);
-        container.appendChild(featured);
-        container.appendChild(banner);
+        } catch (error) {
+            console.error('Error loading home template:', error);
+            container.innerHTML = '<h2>Error loading home</h2>';
+        }
 
         return container;
     }
 
-    createProductCard(product) {
-
+    createProductCard(product, template) {
         const isNew = Math.random() > 0.5;
         const badge = isNew ? '<span class="badge">DESTACADO</span>' : '';
 
-        return `
-             <div class="product-card" onclick="window.location.hash='#/product/${product.id}'">
-                 <div style="position: relative;">
-                     ${badge}
-                     <img src="${product.imagen}" alt="${product.nombre}" loading="lazy">
-                 </div>
-                 <div class="product-info-container">
-                     <p class="product-category">${product.categoria.toUpperCase()}</p>
-                     <h3 class="product-title">${product.nombre}</h3>
-                     <div class="price">${product.precio.toFixed(2)} €</div>
-                     <span class="button-buy">VER DETALLES</span>
-                 </div>
-             </div>
-         `;
+        if (!template) return '';
+
+        let cardHtml = template
+            .split('${id}').join(product.id)
+            .split('${badge}').join(badge)
+            .split('${imagen}').join(product.imagen)
+            .split('${nombre}').join(product.nombre)
+            .split('${categoria}').join(product.categoria.toUpperCase())
+            .split('${precio}').join(product.precio.toFixed(2));
+
+        return cardHtml;
     }
 }
