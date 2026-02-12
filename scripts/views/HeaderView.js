@@ -71,6 +71,9 @@ export class HeaderView {
             const cartWrapper = this.element.querySelector('#cart-wrapper');
             if (cartWrapper) cartWrapper.onclick = () => window.location.hash = '#/cart';
 
+            const accountBtn = this.element.querySelector('#account-btn');
+            if (accountBtn) accountBtn.onclick = () => window.location.hash = '#/account';
+
             this.updateCartCount(this.cartService.getItemCount());
 
             const hamburger = this.element.querySelector('#hamburger-menu');
